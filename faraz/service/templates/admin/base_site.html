@@ -1,0 +1,9 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | فراز {% endblock %}  <!--{{ site_title|default:_('faraz site admin') }}-->
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}"> سامانه مدیریت فراز </a></h1> <!--{{ site_header|default:_('faraz administration') }}-->
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

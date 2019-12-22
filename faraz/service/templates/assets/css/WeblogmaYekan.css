@@ -1,0 +1,7 @@
+@font-face {
+	font-family: 'WeblogmaYekan';
+	src: url(/assets/fonts/WeblogmaYekan.woff2) format('woff2'),
+	url(/assets/fonts/WeblogmaYekan.woff) format('woff');
+	font-weight: normal;
+	font-style: normal;
+}

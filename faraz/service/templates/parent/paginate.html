@@ -1,0 +1,18 @@
+
+
+<!--inja code minvisim mesl halghe for-->
+
+
+
+{% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+    
+        page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+    
+        {% if page_obj.has_previous %}
+            <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+{% endif %}
+

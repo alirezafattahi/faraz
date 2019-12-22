@@ -1,0 +1,29 @@
+{% extends "parent/main.html" %}
+
+
+{% block title%}
+  قراردادها
+{% endblock %}
+
+
+{% block content %}
+
+  {% block body %}
+
+
+
+      <h1>لیست قراردادها</h1>
+      {% if contract_list %}
+        <ul>
+          {% for c in contract_list %}
+            <li><a href="{% url 'service:contract_details' c.id %}">{{ c.subject }}</a> </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p style="color:red;"> قراردادی موجود نمی باشد</p>
+      {% endif %}
+
+
+  {% endblock %}
+
+{% endblock %}

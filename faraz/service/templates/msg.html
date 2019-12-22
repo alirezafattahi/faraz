@@ -1,0 +1,20 @@
+{% extends "parent/main.html" %}
+
+{% block title%}
+{% endblock %}
+
+
+
+
+{% block body %}
+
+
+
+<form action="" method="POST">{%csrf_token%}
+        
+    {{ form.as_p }}
+
+<button type="submit">save</button>
+</form>
+
+{% endblock %}
