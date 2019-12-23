@@ -1,11 +1,13 @@
 {%load static %}
-
+{{ profile_details.user }}
 {{ profile_details.first_name }}
 {{ profile_details.last_name }}
 {{ profile_details.father_name }}
 {{ profile_details.birth_day }}
-
+{{ user.get_username }}
 <img src= "{% static '/personal_img/'%}{{profile_details.img}}" alt="">
-{% with s="TT" %}
-    <a href="{% url 'service:msg' s profile_details.user %}"> send message</a>
+{% with s="FF" %}
+    {% if profile_details.user != user.get_username %}
+        <a href="{% url 'service:msg' s profile_details.user %}"> send message</a>
+    {% endif %}
 {% endwith %}

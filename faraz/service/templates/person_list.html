@@ -1,4 +1,10 @@
+
+
 {% for list in person %}
-   <a href='person/{{list.id}}'> {{ list.first_name }} </a>
-    <br>
+    
+    {% if  user.get_username != list.user %}
+        <a href='person/{{list.id}}'> {{ list.first_name }} </a>
+        <br>
+    {% endif %}
+    
 {% endfor %}

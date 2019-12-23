@@ -1,0 +1,12 @@
+{% for msg in msgs %}
+    {% if msg.reciver == user.get_username %}
+
+        <p style="color:red";> From {{ msg.sender }} </p>| subject :  {{ msg.subject }} <p> {{ msg.text }}         </p>> <small> {{ msg.datetime}} </small>
+            <hr>
+    {% else %}
+    <p style="color:green";> To me </p>| subject :  {{ msg.subject }} <p>| Message : {{ msg.text }}         </p>> <small> {{ msg.datetime}} </small>
+    <hr>
+    {% endif %}
+    
+    
+{% endfor %}

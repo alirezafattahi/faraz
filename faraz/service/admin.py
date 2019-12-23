@@ -16,6 +16,11 @@ class contractAdmin(admin.ModelAdmin):
     recive_chequeInline,
     ]
 
+class msgAdmin(admin.ModelAdmin):
+    list_display = ('sender' , 'reciver' , 'subject')
+    def get_queryset(self , request):
+        qs = msg.objects.all()
+        return qs.filter(reciver=request.user) 
 
 admin.site.register(karbarg)
 admin.site.register(person)
@@ -23,4 +28,4 @@ admin.site.register(customer)
 admin.site.register(recive_cheque)
 admin.site.register(contract , contractAdmin)
 admin.site.register(product)
-admin.site.register(msg)
+admin.site.register(msg , msgAdmin)

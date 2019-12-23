@@ -1,7 +1,8 @@
-from django.shortcuts import render  ,get_object_or_404
+from django.shortcuts import render  ,get_object_or_404 , redirect
 from .forms import proform , msgform
-from .models import contract , person
+from .models import contract , person , msg
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -15,7 +16,7 @@ def pro(request):
         form = proform
     return render(request , 'pro_edit.html', {'form' : form})
 
-def msg(request , s , r):
+def msg_send(request , s , r):
     if request.method == 'POST':
         form = msgform(request.POST)
         if form.is_valid():
@@ -26,9 +27,12 @@ def msg(request , s , r):
             ms.sender = request.user
             ms.datetime = timezone.now()
             ms.save()
+            id2 = get_object_or_404(User,username=r)
+            
+            return redirect( 'profile_name' , id=id2.id)
     else:
         form = msgform
-    return render(request, 'msg.html' , {'form' : form})
+    return render(request, 'msg_send.html' , {'form' : form})
 
 
 
@@ -67,3 +71,12 @@ def profile(request , id):
     }
     return render(request , 'profile.html' , data)
     
+
+def msg_box(request , reciver , sender):
+    out1 = msg.objects.filter(reciver=reciver , sender=sender)
+    out2 = msg.objects.filter(reciver=sender , sender=reciver)
+    output= out1.union(out2)
+    data = {
+        'msgs' : output
+    }
+    return render(request , 'msg_box.html' , data)
